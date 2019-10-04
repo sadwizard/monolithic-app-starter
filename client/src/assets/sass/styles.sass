@@ -1,0 +1,80 @@
+@import components/_variables
+@import components/_media
+@import components/_grid
+@import components/classes.scss
+@import blocks/__blocks
+@import layouts/__layouts
+@import ../fonts/ptsans/stylesheet.css
+@import './node_modules/emoji-picker-react/dist/universal/style.scss';
+
+
+*
+    box-sizing: border-box
+    font-family: $fPTsans
+
+input,textarea
+    border: none
+    outline: none
+
+button
+    outline: none
+    border: none
+    cursor: pointer
+    background: transparent
+    border: none
+    padding: 0
+
+body
+    padding: 0
+    margin: 0
+    color: #222
+    line-height: 1
+
+ul
+    list-style-type: none
+    padding: 0
+    margin: 0
+
+img
+    vertical-align: middle
+    max-width: 100%
+
+svg
+    display: block
+    max-width: 100%
+    max-height: 100%
+
+a
+    text-decoration: none
+    color: inherit
+
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5
+    margin: 0
+
+::-webkit-scrollbar-track 
+  background: transparent
+
+
+::-webkit-scrollbar 
+  width: 4px
+
+
+::-webkit-scrollbar-thumb 
+  background-color: #aaa
+  cursor: pointer
+  border-radius: 1px
+
+.h1
+    font-size: 24px
+
+.h2
+    font-size: 22px
+
+h1,h2,h3,p
+    color: #333

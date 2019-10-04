@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  frontend:
+    image: "monolithic-app-frontend:prod"
+    container_name: "monolithic-app-frontend-prod"
+    build:
+      context: ../../
+      dockerfile: infrastructure/docker/prod-Dockerfile-frontend
+    ports:
+      - 80:80
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - API_LINK=http://142.93.40.225:3000
+
+  backend:
+    image: "monolithic-app-backend:prod"
+    container_name: "monolithic-app-backend-prod"
+    build:
+      context: ../../
+      dockerfile: infrastructure/docker/prod-Dockerfile-backend
+    ports:
+      - "3000:3000"
+    restart: always
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      - NODE_ENV=production
+      - API_LINK=http://142.93.40.225:3000
+
+  db:
+    build:
+      context: .
+      dockerfile: db-Dockerfile
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+    ports:
+      - "3306:3306"
+    volumes:
+      - ../mysql/data:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"

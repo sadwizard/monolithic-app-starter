@@ -1,0 +1,7 @@
+FROM node:11.6.0
+
+WORKDIR /home/app
+COPY server ./
+
+RUN npm install
+ENTRYPOINT npm run start

@@ -1,0 +1,5 @@
+FROM mysql:5.7.25
+
+# COPY ../mysql/eventgo-22-06-19.sql /usr
+ADD ../mysql/init-db.sh /docker-entrypoint-initdb.d/init-db.sh
+EXPOSE 3306

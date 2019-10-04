@@ -1,0 +1,75 @@
+// ----------------------------------------------------------------------
+// Font variables
+// ----------------------------------------------------------------------
+$fRoboto: 'Roboto', sans-serif;
+$fPTsans: 'PT Sans', sans-serif; 
+
+// ----------------------------------------------------------------------
+// Animation speed
+// ----------------------------------------------------------------------
+
+// Использование данных пременныех предполагается для типивых элементов
+// для уникальных, которые необязательно будут связаны друг с другом,
+// предполагается использовать свои значения/переменные
+
+$sp-fastest: 0.1s ;
+$sp-fast: 0.25s;
+$sp-med: 0.4s;
+$sp-sMed: 0.5s;
+$sp-slow: 0.65s;
+$sp-slowest: 0.8s;
+
+// ----------------------------------------------------------------------
+// Layout sizes
+// ----------------------------------------------------------------------
+$maxW: 1400px;
+$minW: 320px;
+$fixWidth: 1060px;
+
+$screenXL: 1800px;
+$screenLG: 1650px;
+
+
+$screenMD_xl: 1500px;
+$screenMD_l: 1380px;
+$screenMD: 1280px; // .col--lg-??
+$screenMD_s: 1160px;
+$screenMD_xs: 1060px; // .col--md-??
+
+$screenSM_xl: 960px;
+$screenSM_l: 860px;
+$screenSM: 760px;  // .col--sm-??
+$screenSM_s: 700px;
+$screenSM_xs: 640px;
+
+$screenXS_xl: 600px;
+$screenXS_l: 540px; // .col--xs-??
+$screenXS: 480px;
+$screenXS_s: 400px; // .col--xxs-??
+
+
+$wrapperM-padd: 30px;
+$wrapperS-padd: 25px;
+$wrapperSS-padd: 15px;
+
+// ----------------------------------------------------------------------
+// Colors
+// ----------------------------------------------------------------------
+
+$cGreen: #71af66;   // Main green
+$cGreenLight: #1dbf69;
+$cBlue: #16171a;   // Main dark blue
+$c333: #444444;
+
+$c333: #595a6d;
+$cRed: #d7a29e;
+$cLightBlue: #0accb2;
+$blue: #5e71bf;
+
+$cBitum: #4f615e;
+
+$cMainDark: #2a2a2a;
+$redLight: #da4e4e;
+$cMain1: #E1004C;
+$cMain2: #f9f9f9;
+$cMain3: #8009d8;

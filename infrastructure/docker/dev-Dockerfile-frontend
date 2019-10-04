@@ -1,0 +1,5 @@
+FROM node:11.6.0
+
+WORKDIR /var/www
+ENTRYPOINT npm install && npm run start
+EXPOSE 9000
