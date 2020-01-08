@@ -1,5 +1,5 @@
 FROM node:11.6.0
 
 WORKDIR /var/www
-ENTRYPOINT npm install && npm run migration-up && npm run start
+ENTRYPOINT npm install && npm run migration-up && npm run start:dev
 EXPOSE 3000

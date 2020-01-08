@@ -9,12 +9,7 @@ ADD crontab /etc/cron.d/simple-cron
 
 WORKDIR /sheduled-tasks
 
-# Add script and grant execution rights
-COPY ./sheduled-tasks ./
-
 RUN chmod +x /sheduled-tasks
-
-RUN npm install
 
 # Give execution rights on the cron job
 RUN chmod 0644 /etc/cron.d/simple-cron
