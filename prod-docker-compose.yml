@@ -1,0 +1,63 @@
+version: '3'
+
+services:
+  frontend:
+    image: "masterget-front:prod"
+    container_name: "masterget-front-prod"
+    build:
+      context: .
+      dockerfile: services/frontend/prod-Dockerfile-frontend
+      args:
+        - NODE_ENV=${NODE_ENV}
+        - API_LINK=${API_LINK}
+        - SUPPORT_EMAIL=${SUPPORT_EMAIL}
+    ports:
+      - 80:80
+    restart: always
+
+  backend:
+    image: "masterget-back:prod"
+    container_name: "masterget-back-prod"
+    build:
+      context: .
+      dockerfile: services/backend/prod-Dockerfile-backend
+    ports:
+      - "3000:3000"
+    restart: always
+    depends_on:
+      - db
+    links:
+      - db
+    env_file:
+      - variables.env
+
+  db:
+    build:
+      context: services/mysql
+      dockerfile: db-Dockerfile
+      args:
+        - DATABASE_USER=${DATABASE_USER}
+        - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - ./services/mysql/data:/var/lib/mysql
+    env_file:
+      - variables.env
+
+  # sheduled-tasks:
+  #   image: "kudago-tasks"
+  #   container_name: "kudago-tasks"
+  #   build:
+  #     context: services/cron/
+  #     dockerfile: Dockerfile
+  #   restart: always
+  #   volumes:
+  #     - ./server/:/sheduled-tasks/
+  #   depends_on:
+  #     - db
+  #   links:
+  #     - db
+  #   env_file:
+  #     - variables.env

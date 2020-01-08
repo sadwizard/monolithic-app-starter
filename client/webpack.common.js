@@ -1,6 +1,20 @@
-var path = require('path');
+const path = require('path');
+const _ = require('lodash'); 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
+
+const envVariables = _.reduce([
+    'NODE_ENV',
+    'API_LINK',
+    'SUPPORT_EMAIL',
+    'VK_API_KEY',
+    'VK_REDIRECT_URI',
+    'VK_API_VERSION'
+  ],
+  (result, key) => {
+    result[key] = JSON.stringify(process.env[key]);
+    return result;
+}, {});
 
 module.exports = {
   entry: {
@@ -96,10 +110,7 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin('style.css'),
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-        API_LINK: JSON.stringify(process.env.API_LINK),
-      },
+      'process.env': envVariables,
     }),
   ]
 };

@@ -1,8 +1,8 @@
 module.exports = {
   mysql: {
     host: "db",
-    user: "appadmin",
+    user: "mastergetadmin",
     password: "123456",
-    database: "app",
+    database: "masterget",
   },
 };

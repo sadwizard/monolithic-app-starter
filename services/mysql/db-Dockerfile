@@ -1,0 +1,8 @@
+FROM mysql:5.7.25
+
+ARG DATABASE_USER
+ARG DATABASE_PASSWORD
+
+COPY initial-tables.sql /usr
+ADD init-db.sh /docker-entrypoint-initdb.d/init-db.sh
+EXPOSE 3306

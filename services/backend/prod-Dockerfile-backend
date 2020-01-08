@@ -4,4 +4,4 @@ WORKDIR /home/app
 COPY server ./
 
 RUN npm install
-ENTRYPOINT npm run start
+ENTRYPOINT npm run migration-up && npm run start
