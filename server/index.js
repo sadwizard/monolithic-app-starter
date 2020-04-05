@@ -23,6 +23,5 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/auth', require('./controllers/auth'));
 app.use('/user', require('./controllers/user'));
-app.use('/specialize', require('./controllers/specialization'));
- 
+
 app.listen(3000, () => console.log('Server starting on localhost:3000'));

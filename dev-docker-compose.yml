@@ -10,7 +10,7 @@ services:
     volumes:
       - ./client/:/var/www/
     ports:
-      - 9000:9000
+      - 8000:8000
     restart: always
     env_file:
       - variables.env
@@ -57,10 +57,10 @@ services:
   #   container_name: "kudago-tasks"
   #   build:
   #     context: services/cron/
-  #     dockerfile: Dockerfile
+  #     dockerfile: dev-Dockerfile
   #   restart: always
   #   volumes:
-  #     - ./server/:/sheduled-tasks/
+  #     - ./services/cron/sheduled-tasks/:/sheduled-tasks/
   #   depends_on:
   #     - db
   #   links:

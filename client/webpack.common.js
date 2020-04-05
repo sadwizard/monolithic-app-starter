@@ -1,5 +1,5 @@
 const path = require('path');
-const _ = require('lodash'); 
+const _ = require('lodash');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 
@@ -16,6 +16,22 @@ const envVariables = _.reduce([
     return result;
 }, {});
 
+
+const babelLoader = {
+  loader: 'babel-loader',
+  options: {
+    cacheDirectory: true,
+    presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-flow'],
+    plugins: [
+      '@babel/plugin-syntax-dynamic-import',
+      ['@babel/plugin-proposal-decorators', { legacy: true }],
+      '@babel/plugin-proposal-class-properties',
+      ['@babel/plugin-proposal-object-rest-spread', { 'loose': true, 'useBuiltIns': true }],
+      '@babel/plugin-transform-async-to-generator'
+    ],
+  }
+};
+
 module.exports = {
   entry: {
     app: './src/index.js'
@@ -28,14 +44,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env', 'react', 'es2015']
-          }
-        }
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules)/,
+        use: [ babelLoader, 'react-prefix-loader' ]
       },
       {
         test: /\.css$/,
@@ -51,7 +62,12 @@ module.exports = {
               loader: 'css-loader',
               options: { minimize: process.env.NODE_ENV === 'production' ? true : false }
             },
-            { loader: 'postcss-loader' },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: [require('postcss-filename-prefix')()]
+              }
+            },
             { loader: 'sass-loader' }
           ]
         })
@@ -86,7 +102,7 @@ module.exports = {
           {
             loader: "babel-loader",
             options: {
-              presets: ['env', 'react', 'es2015']
+              presets: ['@babel/preset-env', '@babel/preset-react']
             }
           },
           {
