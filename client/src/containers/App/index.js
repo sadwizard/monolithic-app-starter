@@ -1,20 +1,21 @@
 import React from 'react';
-import { Route, Link , Redirect , withRouter, Switch } from 'react-router-dom';
+import { Route, Link , Redirect, Switch } from 'react-router-dom';
 import Home from '../Home';
 import observer from 'helpers/observer';
 
 import './index.sass';
 
 @observer({
-  loaders: 'app.loaders'
-}, ['initApp'])
+  loaders: 'app.loaders',
+  token: 'app.token'
+}, ['app.initApp', 'app.thunkInitApp'])
 export default class App extends React.Component {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    this.props.initApp('sdlkfjslkdfjk');
+    this.props.thunkInitApp('sdlkfjslkdfjk');
   }
 
   render() {

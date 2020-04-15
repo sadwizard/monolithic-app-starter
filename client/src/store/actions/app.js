@@ -19,6 +19,17 @@ export function initApp(token) {
   return { type: "initApp" , token };
 };
 
+export function thunkInitApp(token) {
+
+  return (dispatch, getState) => {
+    // const state = getState();
+    // some async operations
+    setTimeout(() => {
+      dispatch(initApp('some'))
+    }, 4000)
+  }
+};
+
 export function setMessage(message) {
   return { type: "setMessage", message };
 };

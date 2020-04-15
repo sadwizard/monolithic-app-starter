@@ -19,6 +19,6 @@ export function templateThunkAction(param) {
   return (dispatch, getState) => {
     // const state = getState();
     // some async operations
-    return dispatch(templateAction('some'))
+    dispatch(templateAction('some'))
   }
 };

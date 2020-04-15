@@ -17,7 +17,7 @@ export default dataApp;
 
 function generateReducer({ state: storeState, methodsKeys }) {
 	return function (state = storeState, action) {
-		if ((methodsKeys || []).includes(action.type)) {
+		if ((methodsKeys || []).includes(action.type) && !(/thunk/gi.test(action.type))) {
 			return applyMutationReducer(state, action)
 		}
 

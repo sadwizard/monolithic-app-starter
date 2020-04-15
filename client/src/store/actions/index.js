@@ -19,8 +19,11 @@ function configureActions(batchActions: object): object {
     states[actionsKey] = { state: item['initialState'] , methodsKeys: [] };
 
     _map(Object.keys(item), actionMethodKey => {
-      if (actionMethodKey !== 'initialState' || !(/thunk/gi.test(actionMethodKey))) {
-        actions[actionMethodKey] = item[actionMethodKey];
+      if (actionMethodKey !== 'initialState') {
+        actions[actionsKey] = {
+          ...actions[actionsKey],
+          [actionMethodKey]: item[actionMethodKey]
+        }
         states[actionsKey]['methodsKeys'].push(actionMethodKey)
       }
     })

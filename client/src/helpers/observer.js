@@ -16,8 +16,8 @@ function observer (props, actions) {
       const injectProps = {}
       const newProps = props || {}
       Object.keys(newProps).map(key => {
-        const path = newProps[key].split('.')
-        injectProps[key] = state[path[0]][path[1]]
+        const path = newProps[key].split('.');
+        injectProps[key] = state[path[0]][path[1]];
       })
 
       return injectProps;
@@ -25,11 +25,16 @@ function observer (props, actions) {
 
     const importMethods = (dispatch) => {
       const injectMethods = {};
-      (actions || []).map(action => {
-        if (!storeActions[action])
-          throw new Error(`Action with that name not found [${Component.name}]`)
+      (actions || []).map(actionPath => {
+        const path = actionPath.split('.');
+        const actionName = path[1];
+        const action = storeActions[path[0]][actionName];
 
-        injectMethods[action] = storeActions[action]
+        if (!action) {
+          throw new Error(`Action with path ${actionName} not found [${Component.name}]`)
+        }
+
+        injectMethods[actionName] = action;
       });
       return bindActionCreators(injectMethods, dispatch)
     };
