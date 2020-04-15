@@ -20,7 +20,6 @@ export function initApp(token) {
 };
 
 export function thunkInitApp(token) {
-
   return (dispatch, getState) => {
     // const state = getState();
     // some async operations
