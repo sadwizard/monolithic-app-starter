@@ -30,7 +30,7 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.5",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "plop": "1.7.3",
     "postcss-filename-prefix": "^1.0.1",
     "postcss-loader": "^3.0.0",
