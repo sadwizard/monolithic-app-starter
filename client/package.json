@@ -57,7 +57,7 @@
     "immutable": "^3.8.2",
     "js-cookie": "^2.2.0",
     "lodash": "^4.17.4",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "prop-types": "^15.7.2",
     "rc-datetime-picker": "^1.6.1",
     "rc-time-picker": "^3.3.1",
